@@ -7,6 +7,8 @@
  */
 // TODO Votre code ici.
 
+$lorem = "lorem ipsum dolor sit amet, ....";
+file_put_contents("lorem.txt", $lorem);
 
 /**
  * 3. Créez un tableau contenant au moins 10 chaînes de caractère au choix.
@@ -16,19 +18,27 @@
  */
 // TODO Votre code ici
 
+$array = ["atota", "btota", "ctota", "dtota", "etota", "ftota", "gtota", "htota", "itota", "jtota"];
+$file = fopen("lorem.txt", 'a+b');
+file_put_contents("lorem.txt", $array, FILE_APPEND);
+fclose($file);
+
 
 /**
  * 5. Trouvez une solution pour afficher à l'aide d'un simple echo l'extension du fichier index.php
  */
 // TODO Votre code ici
 
-
-
+echo pathinfo ( "index.php" , PATHINFO_EXTENSION);
+echo "<br><br>";
 /**
  * 6. Testez si le fichier 'toto' existe, sil n'existe pas, afficher un texte distant que ce fichier n'existe pas !
  */
 // TODO Votre code ici.
 
+if (!file_exists("toto.txt")){
+    echo "ce fichier n'existe pas";
+}
 
 /**
  * Super bonus.
@@ -36,3 +46,7 @@
  * Attention, il y a un piège avec les pointeurs, et une manière très simple de procéder... réfléchissez...
  */
 // TODO Votre code ici si vous faites le bonus.
+
+$content = file_get_contents("lorem.txt");
+$newContent = str_replace('a', '@', $content);
+file_put_contents("lorem.txt", $newContent);
